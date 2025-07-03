@@ -2,6 +2,9 @@
  * @author Kalina Dunne Farrell
  */
 
+// Imports
+import java.util.Scanner;
+
 public class Driver {
 
     /**
@@ -11,12 +14,32 @@ public class Driver {
      */
     public static void main(String[] args) {
         // TODO: generate random number
-        // TODO: set counter
+        int number = 0;
+        /** Number of guesses user has made */
+        int counter = 0;
+        /** Range number is in (for hints) */
+        int numRange = getNumRange(number);
+        /** Number of hints user has made */
+        int hintCount = 0;
+        /** Scanner to get user input */
+        Scanner keyboard = new Scanner(System.in);
+        /** User input */
+        String input;
 
         // TODO: Loop to get user input until number = guess
-        // TODO: Check if H to get hint
-        // TODO: not hint - call checkInt and loop until true
-        // TODO: check guess - loop
+        do {
+            System.out.print("Enter your guess or \"h\" for hint");
+            input = keyboard.next();
+
+            // TODO: Check if H to get hint
+            if (input.equalsIgnoreCase("h")) {
+                giveHint(number, hintCount, numRange);
+                hintCount++;
+            }
+            // TODO: not hint - call checkInt and loop until true
+            // TODO: check guess - loop
+            
+        } while (true);
         // TODO: after number = guess, output counter
     }
 
@@ -27,13 +50,40 @@ public class Driver {
      * @param input    - user input
      * @return isValid - did the user enter an integer?
      */
-    public boolean  checkInt(String input) {
+    public boolean checkInt(String input) {
         /** Boolean - was input an integer (true) or not (false) */
         boolean isValid;
-        
+
         // TODO: try convert to int - set isValid to true
-        // TODO: catch excetion and display error message - set isValid to false
+        try {
+            Integer.parseInt(input);
+            isValid = true;
+        } catch (Exception e) {
+            // TODO: change exception type
+            System.out.println(input + " is not a number.");
+            isValid = false;
+        }
 
         return isValid;
+    }
+
+    /**
+     * Gives the user a hint
+     * 
+     * @param number - number to guess
+     */
+    public static void giveHint(int number, int hintCount, int numRange) {
+        // TODO: print hint depending on number range
+        
+    }
+
+    /**
+     * Sets the number range for hints
+     * 
+     * @param number - the number to guess
+     */
+    public static int getNumRange(int number) {
+
+        return 0;
     }
 }
